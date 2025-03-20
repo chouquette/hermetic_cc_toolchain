@@ -153,6 +153,10 @@ fn spawnWindows(arena: mem.Allocator, params: ExecParams) u8 {
 }
 
 fn execUnix(arena: mem.Allocator, params: ExecParams) u8 {
+    // std.debug.print("executing command from wrapper:", .{});
+    // for (params.args.items, 0..) |item, i| {
+    //     std.debug.print("\t{d}: {s}\n", .{ i, item });
+    // }
     const err = process.execve(arena, params.args.items, &params.env);
     std.debug.print(
         "error execing {s}: {s}\n",
